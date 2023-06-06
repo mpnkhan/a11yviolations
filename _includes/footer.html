@@ -42,3 +42,21 @@
       </ul>
     </div>
   </div>
+  <script type="text/javascript">
+      // blink "on" state
+      function show()
+      {
+        if (document.getElementById("blink1"))
+        document.getElementById("blink1").style.visibility = "visible";
+        setTimeout("hide()", 450);
+      }
+      // blink "off" state
+      function hide()
+      {
+        if (document.getElementById("blink1"))
+        document.getElementById("blink1").style.visibility = "hidden";
+        setTimeout("show()", 450);
+      }
+      // kick it off
+      show();    
+  </script>
