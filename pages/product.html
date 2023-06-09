@@ -1,0 +1,203 @@
+---
+title: Product Page
+layout: default
+---
+<style type="text/css">
+      .failure {
+        background: rgb(255, 100, 100);
+      }
+
+      .success {
+        background: rgb(50, 255, 50);
+      }
+
+      :popover-open {
+        position: absolute;
+        inset: unset;
+        right: 5px;
+        top: 5px;
+      }
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check" viewBox="0 0 16 16">
+    <title>Check</title>
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+  </symbol>
+</svg>
+
+  <div class="container text-center">
+    <div class="row align-items-center">
+      <div class="col">
+            <img src="/a11yviolations/img/iphone-card-40-iphone14pro-202209.jpg" alt="animated"  style="margin-top:50px">
+      </div>
+      <div class="col">
+          <h2>iPhone&nbsp;14&nbsp;Pro and iPhone&nbsp;14&nbsp;Pro&nbsp;Max</h2>
+          <button type="button" class="btn btn-primary btn-lg" onClick="addtoCart(this)">Add to cart</button><br><br>
+            <a class="btn btn-primary" href="cart" role="button">Checkout</a>         
+      </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="margin-top:30px">
+        <div class="col">
+          <div class="card shadow-sm align-items-center">
+              <img src="/a11yviolations/img/compare_iphone_14_pro__dny32075a7ki_large.jpg" style="width: 190px;height: 257px;">
+            <div class="card-body">
+              <p class="card-text">iPhone 14 Pro - The ultimate iPhone</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                   <button type="button" class="btn btn-primary btn-lg" onClick="addtoCart(this)">Add to cart</button>
+                </div>
+               <p><a href="/in/iphone-14-pro/"><span class="icon-copy">Learn more</span></a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+             <img src="/a11yviolations/img/compare_iphone_14__eqqs4h5c53gy_large.jpg" style="width: 190px;height: 257px;">
+
+            <div class="card-body">
+              <p class="card-text">iPhone 14 - A total powerhouse.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                   <button type="button" class="btn btn-primary btn-lg" onClick="addtoCart(this)">Add to cart</button>
+                </div>
+               <p><a href="/in/iphone-14-pro/"><span class="icon-copy">Learn more</span></a></p>
+              </div>
+            </div>
+          </div>
+        </div>      
+         <div class="col">
+          <div class="card shadow-sm">
+              <img src="/a11yviolations/img/compare_iphone_13__jxgor7g19iai_large.jpg" style="width: 190px;height: 257px;">           
+
+            <div class="card-body">
+              <p class="card-text">iPhone 13 - As amazing as ever.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                   <button type="button" class="btn btn-primary btn-lg" onClick="addtoCart(this)">Add to cart</button>
+                </div>
+               <p><a href="/in/iphone-14-pro/"><span class="icon-copy">Learn more</span></a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>      
+
+<div class="table-responsive  mt-5">
+
+   <h2>Which iPhone is right for you?</h2>
+    <table class="table text-center">
+      <div>
+        <tr>
+          <th style="width: 34%;"></th>
+          <th style="width: 22%;">Price</th>
+          <th style="width: 22%;">Display</th>
+          <th style="width: 22%;">Enterprise</th>
+        </tr>
+        <tr>
+            <th class="text-start">iPhone 14 Pro </th>
+            <td>$999*</td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+        </tr>
+      </div>
+      <div>
+        <tr>
+             <th class="text-start">iPhone 14</th>
+            <td>$799*</td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td></td>
+        </tr>
+      </div>
+      <div>
+        <tr>
+             <th class="text-start">iPhone 13</th>
+            <td>$599*</td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td></td>
+        </tr>
+      </div>      
+    </table>
+
+      
+    </div> <!--table-responsive-->
+
+  </div>
+
+ 
+  <script type="text/javascript">
+let successCount = 0;
+let failCount = 0;
+
+function makeToast(result, el) {
+
+  // Create an element and make it into a popover
+  const popover = document.createElement("div");
+  popover.popover = "manual";
+  popover.classList.add("toast1");
+  popover.classList.add("newest");
+  // console.log(el)
+  let msg;
+  // Give the toast an appropriate text content, class for styling, and update
+  // the relevant count, depending on whether it was a success or a failure
+  if (result === "success") {
+    successCount++;
+    msg = `${successCount} items added to cart`;
+    popover.classList.add("success");
+  } else if (result === "failure") {
+    failCount++;
+    msg = "Action failed!";
+    popover.classList.add("failure");
+  } else {
+    return;
+  }
+
+  // Give the toast its text content, and add it to the DOM
+  popover.textContent = msg;
+  document.body.appendChild(popover);
+  // document.getElementsByClassName('container')[0].appendChild(popover);
+  console.log('appended',popover)
+
+  // Show the popover
+  popover.showPopover();
+  popover.scrollIntoView();
+  // Remove the toast again after 4 seconds
+  setTimeout(() => {
+    popover.hidePopover();
+    popover.remove();
+  }, 1000);
+
+  // When a new toast appears, run the movetoastsUp() function
+  popover.addEventListener("toggle", (event) => {
+    if (event.newState === "open") {
+      moveToastsUp();
+    }
+  });  
+} 
+
+function moveToastsUp() {
+  const toasts = document.querySelectorAll(".toast1");
+
+  toasts.forEach((toast) => {
+    // If the toast is the one that has just appeared, we don't want it to move up.
+    if (toast.classList.contains("newest")) {
+      toast.style.top = `5px`;
+      toast.classList.remove("newest");
+    } else {
+      // Move up all the other toasts by 50px to make way for the new one
+      const prevValue = toast.style.top.replace("px", "");
+      const newValue = parseInt(prevValue) + 50;
+      toast.style.top = `${newValue}px`;
+    }
+    console.log('toast', toast)
+  });
+}
+
+  function addtoCart(e){
+    // alert('added')
+    makeToast("success",e);
+  }
+
+</script>
